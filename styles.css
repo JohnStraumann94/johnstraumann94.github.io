@@ -69,6 +69,18 @@ a{color:inherit;text-decoration:none}
 .work-item p{color:#6e788c;max-width:540px;margin-bottom:22px}
 .featured p{color:#b1bad0}
 .text-link{font-weight:700;font-size:13px}
+.text-link.light{color:#b9c2ff}
+.text-link.light:hover{color:#fff}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a3247;border:1px solid #2a3247}
+.track{background:var(--dark);padding:38px 34px;display:flex;flex-direction:column}
+.track-label{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--accent);margin-bottom:34px}
+.track-title{font:600 27px "Space Grotesk";margin:0 0 14px;letter-spacing:-.02em}
+.track-intro{color:#9ca6ba;font-size:15px;line-height:1.75;margin:0 0 8px}
+.asset-list{list-style:none;margin:0 0 28px;padding:0}
+.asset-list li{padding:22px 0;border-top:1px solid #2a3247}
+.asset-list strong{display:block;font:600 17px "Space Grotesk";margin-bottom:6px}
+.asset-list span{display:block;color:#9ca6ba;font-size:14px;line-height:1.7}
+.track .text-link{margin-top:auto}
 .perspective-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px}
 .quote{align-self:center;padding-left:25px;border-left:2px solid var(--accent)}
 .quote p{font:500 26px/1.45 "Space Grotesk";letter-spacing:-.02em}
@@ -94,6 +106,7 @@ a{color:inherit;text-decoration:none}
   .principles{grid-template-columns:1fr 1fr}
   .principles div:nth-child(2){border-right:0}.principles div{border-bottom:1px solid var(--line)}
   .work-grid{grid-template-columns:1fr}
+  .tracks{grid-template-columns:1fr}
 }
 @media(max-width:520px){
   .hero h1{font-size:43px}.hero-text{font-size:17px}.hero-actions{flex-direction:column;align-items:stretch}
