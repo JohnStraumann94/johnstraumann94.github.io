@@ -1,3 +1,32 @@
+// Set this to a collector URL to record downloads yourself. Leave null to rely
+// only on whichever analytics script (if any) is loaded in index.html.
+const DOWNLOAD_ENDPOINT = null;
+
+function trackDownload(href, label) {
+  const detail = {
+    file: href.split('/').pop(),
+    label,
+    page: location.pathname,
+    referrer: document.referrer || null,
+    at: new Date().toISOString()
+  };
+
+  if (DOWNLOAD_ENDPOINT && navigator.sendBeacon) {
+    navigator.sendBeacon(DOWNLOAD_ENDPOINT, new Blob([JSON.stringify(detail)], { type: 'application/json' }));
+  }
+
+  // Hand off to a hosted analytics tool if one is present.
+  window.gtag?.('event', 'file_download', { file_name: detail.file, link_url: href });
+  window.plausible?.('Download', { props: { file: detail.file } });
+  window.goatcounter?.count?.({ path: 'download/' + detail.file, title: label, event: true });
+}
+
+document.querySelectorAll('a[href$=".docx"], a[href*="microsoft-foundry-labs"]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackDownload(link.getAttribute('href'), link.textContent.trim());
+  });
+});
+
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#nav');
 
