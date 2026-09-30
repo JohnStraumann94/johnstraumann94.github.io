@@ -8,14 +8,24 @@ A responsive, static personal/leadership website designed for GitHub Pages.
 - `styles.css` — visual design and responsive layout
 - `script.js` — mobile navigation
 
-## Before publishing
+## Sections
 
-Replace:
-- `YOUR_EMAIL@example.com`
-- the LinkedIn placeholder
-- the four Selected Work descriptions/links
-- any biography text with your actual experience
+`index.html` is a single page with seven sections: About, AI Leadership, Selected Work,
+Playbooks & Toolkits, Training, Perspective, and Contact. The section kickers are numbered
+by hand (`01 — ABOUT` … `07 — CONTACT`), so renumber them if a section is inserted or removed.
+
+The Training section links out to
+[microsoft-foundry-labs](https://github.com/JohnStraumann94/microsoft-foundry-labs), the
+20-module hands-on Microsoft Foundry course.
+
+## Still to replace
+
+- `YOUR_EMAIL@example.com` in the Contact section
+- the LinkedIn placeholder (`href="#"`)
+- the four Selected Work descriptions and their `href="#"` links
 
 ## GitHub Pages
 
-Create a repository named `johnstraumann94.github.io`, upload these files to the repository root, then enable GitHub Pages from the repository's Settings → Pages area using the `main` branch.
+The site is served from the `main` branch root of `johnstraumann94.github.io` — no build
+step and no Jekyll theme, so a push to `main` is live within about a minute at
+<https://johnstraumann94.github.io>. Settings are under the repository's Settings → Pages.
