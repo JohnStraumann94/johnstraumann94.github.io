@@ -1,6 +1,44 @@
 // Playbook downloads are tracked server-side by the /api/d redirect, so only
 // outbound links that cannot be redirected are reported from the browser.
 const DOWNLOAD_ENDPOINT = 'https://thankful-dune-0ba7c140f.6.azurestaticapps.net/api/collect';
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'];
+
+// Campaign tags arrive on the landing URL but the download links point at a
+// different host, so carry them for the rest of the visit. Social apps often
+// strip the referrer, which makes these the only reliable attribution.
+function campaignTags() {
+  const incoming = new URLSearchParams(location.search);
+  const tags = {};
+
+  UTM_KEYS.forEach(key => {
+    const value = incoming.get(key);
+    if (value) {
+      tags[key] = value.slice(0, 60);
+    }
+  });
+
+  try {
+    if (Object.keys(tags).length) {
+      sessionStorage.setItem('campaign', JSON.stringify(tags));
+      return tags;
+    }
+    return JSON.parse(sessionStorage.getItem('campaign') || '{}');
+  } catch {
+    return tags;
+  }
+}
+
+const campaign = campaignTags();
+
+// Append the campaign to the tracked download links so the redirect can record
+// which post the visitor came from.
+if (Object.keys(campaign).length) {
+  document.querySelectorAll('a[href*="/api/d?"]').forEach(link => {
+    const url = new URL(link.href);
+    Object.entries(campaign).forEach(([key, value]) => url.searchParams.set(key, value));
+    link.href = url.toString();
+  });
+}
 
 function trackDownload(href, label) {
   const detail = {
@@ -8,6 +46,9 @@ function trackDownload(href, label) {
     label,
     page: location.pathname,
     referrer: document.referrer || null,
+    utmSource: campaign.utm_source || '',
+    utmMedium: campaign.utm_medium || '',
+    utmCampaign: campaign.utm_campaign || '',
     at: new Date().toISOString()
   };
 
