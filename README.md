@@ -20,9 +20,8 @@ The Training section links out to
 
 ## Still to replace
 
-- `YOUR_EMAIL@example.com` in the Contact section
-- the LinkedIn placeholder (`href="#"`)
-- the four Selected Work descriptions and their `href="#"` links
+- the LinkedIn placeholder (`href="#"`) — no LinkedIn URL is published on the GitHub profile
+- the four Selected Work descriptions and their `href="#"` links, which are still template text
 
 ## GitHub Pages
 
