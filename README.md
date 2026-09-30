@@ -24,24 +24,25 @@ The Training section links out to
 
 ## Download tracking
 
-GitHub Pages serves static files only, so no server-side logging is possible. `script.js`
-instead hooks every `.docx` link and every link to the Foundry course repository, and calls
-`trackDownload()`.
+GitHub Pages serves static files only, so no server-side logging is possible here. Playbook
+downloads therefore route through a small Azure endpoint that records the click and then
+redirects to the file, which still lives in `playbooks/` on this site:
 
-That function does two things, both off by default:
+```
+https://thankful-dune-0ba7c140f.6.azurestaticapps.net/api/d?f=<filename>
+```
 
-1. If `DOWNLOAD_ENDPOINT` at the top of `script.js` is set to a collector URL, it POSTs a
-   small JSON record (file, link label, page, referrer, timestamp) with `navigator.sendBeacon`.
-   The collector must return permissive CORS headers.
-2. It forwards the event to `gtag`, `plausible`, or `goatcounter` if one of those scripts is
-   loaded in `index.html`. None currently is, so those calls are no-ops.
+Because that is an ordinary navigation rather than a background request, it is not defeated
+by ad blockers or by JavaScript being turned off. When you add or re-version a playbook you
+must update the file name in **two** places: the `href` in `index.html`, and the allowlist in
+`api/shared/files.js` in the `site-analytics-api` project. The endpoint returns 404 for any
+file not on that list.
 
-Enable tracking by either adding an analytics snippet to `index.html` or pointing
-`DOWNLOAD_ENDPOINT` at your own collector. A database is only needed for option 2 — a hosted
-analytics tool stores the counts for you.
+Outbound links to the Foundry course cannot be redirected, so `script.js` reports those with
+`navigator.sendBeacon` to `/api/collect` instead. That part *is* blockable.
 
-Note that this records clicks, not completed downloads, and it misses anyone with an ad
-blocker or JavaScript disabled, or who hits a `playbooks/*.docx` URL directly.
+Clicks land in the `johnz-site-insights` Application Insights resource in `rg-site-analytics`.
+See the `site-analytics-api` project README for the KQL queries and the redeploy command.
 
 ## Still to replace
 

@@ -1,6 +1,6 @@
-// Set this to a collector URL to record downloads yourself. Leave null to rely
-// only on whichever analytics script (if any) is loaded in index.html.
-const DOWNLOAD_ENDPOINT = null;
+// Playbook downloads are tracked server-side by the /api/d redirect, so only
+// outbound links that cannot be redirected are reported from the browser.
+const DOWNLOAD_ENDPOINT = 'https://thankful-dune-0ba7c140f.6.azurestaticapps.net/api/collect';
 
 function trackDownload(href, label) {
   const detail = {
@@ -11,8 +11,10 @@ function trackDownload(href, label) {
     at: new Date().toISOString()
   };
 
+  // text/plain keeps this a simple request, so no CORS preflight is needed --
+  // sendBeacon cannot recover from a failed preflight.
   if (DOWNLOAD_ENDPOINT && navigator.sendBeacon) {
-    navigator.sendBeacon(DOWNLOAD_ENDPOINT, new Blob([JSON.stringify(detail)], { type: 'application/json' }));
+    navigator.sendBeacon(DOWNLOAD_ENDPOINT, new Blob([JSON.stringify(detail)], { type: 'text/plain' }));
   }
 
   // Hand off to a hosted analytics tool if one is present.
@@ -21,7 +23,7 @@ function trackDownload(href, label) {
   window.goatcounter?.count?.({ path: 'download/' + detail.file, title: label, event: true });
 }
 
-document.querySelectorAll('a[href$=".docx"], a[href*="microsoft-foundry-labs"]').forEach(link => {
+document.querySelectorAll('a[href*="microsoft-foundry-labs"]').forEach(link => {
   link.addEventListener('click', () => {
     trackDownload(link.getAttribute('href'), link.textContent.trim());
   });
