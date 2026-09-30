@@ -70,6 +70,7 @@ a{color:inherit;text-decoration:none}
 .featured p{color:#b1bad0}
 .text-link{font-weight:700;font-size:13px}
 .section-note{margin:40px 0 0;padding-top:24px;border-top:1px solid var(--line);color:#6e788c;font-size:13px;line-height:1.8;max-width:760px}
+.section-note.light{border-top-color:#2a3247;color:#9ca6ba}
 .text-link.light{color:#b9c2ff}
 .text-link.light:hover{color:#fff}
 .tracks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a3247;border:1px solid #2a3247}
@@ -81,6 +82,8 @@ a{color:inherit;text-decoration:none}
 .asset-list li{padding:22px 0;border-top:1px solid #2a3247}
 .asset-list strong{display:block;font:600 17px "Space Grotesk";margin-bottom:6px}
 .asset-list span{display:block;color:#9ca6ba;font-size:14px;line-height:1.7}
+.asset-link{display:inline-block;margin:12px 20px 0 0;font:700 12px "Space Grotesk";letter-spacing:.02em;color:#b9c2ff}
+.asset-link:hover{color:#fff}
 .track .text-link{margin-top:auto}
 .perspective-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px}
 .quote{align-self:center;padding-left:25px;border-left:2px solid var(--accent)}

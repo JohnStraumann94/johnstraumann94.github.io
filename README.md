@@ -7,6 +7,10 @@ A responsive, static personal/leadership website designed for GitHub Pages.
 - `index.html` — page structure/content
 - `styles.css` — visual design and responsive layout
 - `script.js` — mobile navigation
+- `playbooks/` — the AI Playbook documents served for direct download from the
+  Playbooks & Toolkits section. Masters live in
+  `D:\Johnz Projects\Training\AI\Playbooks`; copy a new version in and update the
+  matching `<a class="asset-link">` href, which carries the version in the file name.
 
 ## Sections
 
