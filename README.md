@@ -7,6 +7,7 @@ A responsive, static personal/leadership website designed for GitHub Pages.
 - `index.html` — page structure/content
 - `styles.css` — visual design and responsive layout
 - `script.js` — mobile navigation and download-click tracking
+- `articles/` — long-form educational papers available for direct download
 - `playbooks/` — the AI Playbook documents served for direct download from the
   Playbooks & Toolkits section. Masters live in
   `D:\Johnz Projects\Training\AI\Playbooks`; copy a new version in and update the
@@ -14,9 +15,10 @@ A responsive, static personal/leadership website designed for GitHub Pages.
 
 ## Sections
 
-`index.html` is a single page with seven sections: About, AI Leadership, Selected Work,
-Playbooks & Toolkits, Training, Perspective, and Contact. The section kickers are numbered
-by hand (`01 — ABOUT` … `07 — CONTACT`), so renumber them if a section is inserted or removed.
+`index.html` is a single page with eight sections: About, AI Leadership, Selected Work,
+Playbooks & Toolkits, Training, Articles, Perspective, and Contact. The section kickers are
+numbered by hand (`01 — ABOUT` … `08 — CONTACT`), so renumber them if a section is inserted
+or removed.
 
 The Training section links out to
 [microsoft-foundry-labs](https://github.com/JohnStraumann94/microsoft-foundry-labs), the
@@ -40,6 +42,9 @@ file not on that list.
 
 Outbound links to the Foundry course cannot be redirected, so `script.js` reports those with
 `navigator.sendBeacon` to `/api/collect` instead. That part *is* blockable.
+
+Article downloads are served directly from `articles/` and use the same browser-side
+`sendBeacon` tracking through links marked with `data-download`.
 
 Clicks land in the `johnz-site-insights` Application Insights resource in `rg-site-analytics`.
 See the `site-analytics-api` project README for the KQL queries and the redeploy command.

@@ -70,6 +70,12 @@ document.querySelectorAll('a[href*="microsoft-foundry-labs"]').forEach(link => {
   });
 });
 
+document.querySelectorAll('a[data-download]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackDownload(link.getAttribute('href'), link.textContent.trim());
+  });
+});
+
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#nav');
 
