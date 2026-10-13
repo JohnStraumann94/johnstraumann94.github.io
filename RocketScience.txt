@@ -1,0 +1,18 @@
+I read that Elon Musk learned Rocket Science by reading 2 books,
+fundamentals-of-astrodynamics.pdf
+and
+rocket-propulsion-elements.pdf
+I thought it would be fun to developed a couple Visual Studio .NET projects to allow students
+to "play" with the equations from the books and visualize Rocket Flight paths.
+The projects are in:
+C:\Users\JohnStraumann\Books\FundamentalsOfAstrodynamics
+and 
+C:\Users\JohnStraumann\Books\RocketPropulsionElements
+
+I have a github site under my ID: JohnStraumann94, and my Github site
+is in this folder, and I want to publish both
+the Visual Studio Source code and .exe or .msi file that Users can run to install
+just the APPs to run.
+
+Analyze the projects and create the needed files to upload to my Github site for both the
+full Visual Studio Source code projects and then the installer files. 
