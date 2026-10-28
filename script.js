@@ -85,5 +85,8 @@ toggle?.addEventListener('click', () => {
 });
 
 document.querySelectorAll('.nav a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  });
 });

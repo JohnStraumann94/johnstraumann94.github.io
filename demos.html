@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download 20 Azure AI PowerPoint click-through demos: operational scenarios, document intelligence, agents, language services and Microsoft Foundry.">
+  <title>Azure AI Demos | John Straumann</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.65; }
+    a { color: var(--cp-link); text-underline-offset: 4px; }
+    a:hover { color: var(--cp-accent-hover); }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 4px; }
+    .site-header { background: var(--cp-surface); border-bottom: 1px solid var(--cp-border); }
+    .nav-wrap { max-width: 1240px; margin: auto; padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--cp-text); font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .brand img { border-radius: 0.625rem; object-fit: cover; }
+    .nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; }
+    .nav a { color: var(--cp-text-muted); text-decoration: none; }
+    .nav a:hover, .nav a[aria-current] { color: var(--cp-accent); }
+    .menu-toggle { display: none; border: 1px solid var(--cp-border); border-radius: 0.625rem; padding: 8px 12px; background: var(--cp-surface); color: var(--cp-text); font: inherit; }
+    main { max-width: 1180px; margin: auto; padding: 64px 28px; }
+    .eyebrow, .meta { font-size: 12px; letter-spacing: 0.08em; font-weight: 700; color: var(--cp-accent); }
+    h1 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.04em; line-height: 1.1; margin: 16px 0 24px; }
+    .intro { max-width: 760px; font-size: 20px; color: var(--cp-text-muted); }
+    .jump-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
+    .jump-links a { border: 1px solid var(--cp-border); border-radius: 0.625rem; padding: 8px 16px; background: var(--cp-surface); font-weight: 600; text-decoration: none; }
+    .instructions { padding: 20px 24px; border-left: 4px solid var(--cp-accent); border-radius: 0.625rem; background: var(--cp-surface); }
+    .instructions p { margin: 0; }
+    section { padding-top: 40px; scroll-margin-top: 24px; }
+    h2 { font-size: 32px; line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .section-intro { color: var(--cp-text-muted); max-width: 880px; margin-bottom: 28px; }
+    .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .demo-card { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; align-items: flex-start; }
+    .meta { margin: 0 0 12px; color: var(--cp-text-muted); }
+    h3 { font-size: 24px; line-height: 1.25; margin: 0 0 16px; }
+    .demo-card p { margin: 0 0 16px; overflow-wrap: anywhere; }
+    .demo-card p:not(.meta) { color: var(--cp-text-muted); }
+    .demo-card strong { color: var(--cp-text); }
+    details { margin-bottom: 24px; width: 100%; }
+    summary { cursor: pointer; color: var(--cp-text); font-weight: 600; }
+    details p { padding-top: 12px; font-size: 14px; }
+    .download { display: inline-flex; gap: 20px; justify-content: space-between; align-items: center; margin-top: auto; border-radius: 0.625rem; padding: 12px 20px; background: var(--cp-accent); color: var(--cp-accent-fg); text-decoration: none; font-weight: 700; }
+    .download:hover { background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+    footer { border-top: 1px solid var(--cp-border); padding: 24px 28px; text-align: center; color: var(--cp-text-muted); font-size: 14px; }
+    @media (max-width: 1100px) {
+      .nav-wrap { flex-wrap: wrap; }
+      .menu-toggle { display: block; }
+      .nav { width: 100%; flex-direction: column; }
+      .js .nav { display: none; }
+      .js .nav.open { display: flex; }
+    }
+    @media (max-width: 700px) {
+      main { padding: 40px 20px; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .demo-card { padding: 24px; }
+      .nav-wrap { padding: 16px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="John Straumann home"><img src="images/Me.jpg" alt="" width="38" height="38"><span>John Straumann</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#focus">AI Leadership</a>
+        <a href="index.html#work">Selected Work</a>
+        <a href="index.html#playbooks">Playbooks &amp; Toolkits</a>
+        <a href="index.html#training">Training</a>
+        <a href="demos.html" aria-current="page">Demos</a>
+        <a href="index.html#articles">Articles</a>
+        <a href="index.html#perspective">Perspective</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <p class="eyebrow">AZURE AI &middot; CLICK-THROUGH LIBRARY</p>
+    <h1>Explore the workflow.<br>Download the demo.</h1>
+    <p class="intro">20 PowerPoint presentations. 391 slides. Practical Azure AI scenarios, guided solution tours and architecture briefings you can explore at your own pace.</p>
+    <div class="jump-links" aria-label="Demo categories">
+      <a href="#operational">Operational scenarios &middot; 10</a>
+      <a href="#solutions">Solution &amp; platform tours &middot; 10</a>
+    </div>
+    <aside class="instructions" aria-label="How to use these demos">
+      <p><strong>How to use:</strong> Download a PPTX, open it in desktop PowerPoint and start Slide Show. Review the opening context and architecture slides, then follow START TOUR or the deck's navigation controls where provided. These are recorded or illustrated walkthroughs, not live applications; downloading or clicking a slide does not call Azure or require an Azure subscription. See each demo's evidence and limits for what is actually demonstrated.</p>
+    </aside>
+    <section id="operational" aria-labelledby="operational-title">
+      <h2 id="operational-title">Operational scenarios</h2>
+      <p class="section-intro">Ten nine-slide walkthroughs of synthetic staff workflows. Real app screenshots replay saved Azure results or deterministic checks; approvals shown are previously recorded. External actions and handoffs are simulated or disabled. These are local demonstration workbenches, not production systems or public hosted applications.</p>
+      <div class="demo-grid">
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.80 MB</p>
+        <h3>Supplier Invoice Exception Desk</h3>
+        <p>Analysts manually compare invoices, purchase orders and receiving records. Duplicate bills, price variances and unexplained payment-detail changes stall legitimate work and create avoidable payment risk.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Clean invoice / 02  PO / receipt checks / 03  Quantity variance / 04  Duplicate invoice / 05  Bank-change hold / 06  Approve / audit</p>
+        <details><summary>Evidence and limits</summary><p>A bank-detail change always requires independent verified supplier-contact procedures. AI cannot label a supplier fraudulent, approve payment or overwrite finance records.</p></details>
+        <a class="download" href="demos/InvoiceException_ClickThroughDemo.pptx" download data-download aria-label="Download Supplier Invoice Exception Desk PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.77 MB</p>
+        <h3>Building Permit Application Preflight</h3>
+        <p>Permit staff receive incomplete forms and mismatched supporting documents. Applicants discover missing items late, while reviewers spend time chasing basic corrections instead of reviewing plans.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Permit checklist / 02  Missing authorization / 03  Parcel mismatch / 04  Dated requirement / 05  Corrected packet / 06  Review / no permit</p>
+        <details><summary>Evidence and limits</summary><p>Do not infer code compliance, structural safety or legal entitlement. Conflicting/outdated guidance requires staff review. Map/GIS and payment gateways are out of MVP.</p></details>
+        <a class="download" href="demos/PermitPreflight_ClickThroughDemo.pptx" download data-download aria-label="Download Building Permit Application Preflight PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.76 MB</p>
+        <h3>Maintenance Work-Order Readiness</h3>
+        <p>Fault reports arrive without asset identity, useful symptoms or service history. Planners repeatedly ask for missing details and locate the correct approved manual before scheduling work.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Verified asset / 02  Missing symptoms / 03  Exact-model manual / 04  Unknown asset / 05  Supervisor gate / 06  Work-order draft</p>
+        <details><summary>Evidence and limits</summary><p>Safety-related input displays the approved site emergency/escalation notice and requires a responsible supervisor. Never produce hazardous troubleshooting instructions or claim the machine is safe to operate.</p></details>
+        <a class="download" href="demos/MaintenanceReadiness_ClickThroughDemo.pptx" download data-download aria-label="Download Maintenance Work-Order Readiness PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.77 MB</p>
+        <h3>Insurance Claim Intake Organizer</h3>
+        <p>First-notice-of-loss submissions mix incomplete narratives, dates, invoices and estimates. Intake staff must organize the facts and ask targeted follow-up questions before an adjuster can review.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Loss inquiry / 02  Timeline / evidence / 03  Conflicting dates / 04  Adjuster referral / 05  Missing estimate / 06  Approve intake only</p>
+        <details><summary>Evidence and limits</summary><p>A date discrepancy is a review flag, not proof of no coverage or fraud. Avoid protected-attribute profiling and unsupported credibility scoring. Only the adjuster may determine coverage.</p></details>
+        <a class="download" href="demos/ClaimIntake_ClickThroughDemo.pptx" download data-download aria-label="Download Insurance Claim Intake Organizer PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.71 MB</p>
+        <h3>Retail Return Resolution Assistant</h3>
+        <p>Return requests arrive with missing order details, ambiguous symptoms and inconsistent policy interpretation. Representatives spend time locating purchases and explaining available options.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Verified order / 02  Allowed options / 03  Expired window / 04  Wrong owner denied / 05  Supervisor exception / 06  Reply / demo sink</p>
+        <details><summary>Evidence and limits</summary><p>Do not infer fraud from writing style, sentiment or photos. A policy exception needs supervisor approval. Never reveal an order until ownership/access is verified.</p></details>
+        <a class="download" href="demos/ReturnResolution_ClickThroughDemo.pptx" download data-download aria-label="Download Retail Return Resolution Assistant PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.69 MB</p>
+        <h3>Hotel Guest Service Recovery Desk</h3>
+        <p>Guest concerns arrive in free text and multiple languages. Staff need booking context, a clear handoff and approved recovery options without promising unavailable rooms or compensation.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Guest request / 02  Routed staff task / 03  Allowed recovery / 04  Wrong stay denied / 05  Urgent staff gate / 06  Approve / demo sink</p>
+        <details><summary>Evidence and limits</summary><p>No invented availability, guaranteed refund or accessibility determination. Urgent safety matters route to staff using an approved notice; the app is not an emergency service.</p></details>
+        <a class="download" href="demos/GuestRecovery_ClickThroughDemo.pptx" download data-download aria-label="Download Hotel Guest Service Recovery Desk PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.81 MB</p>
+        <h3>Nonprofit Grant Application Readiness</h3>
+        <p>Small nonprofits lose time assembling narratives, budgets and attachments against complex funding guidelines. Missing evidence and internal budget inconsistencies are discovered near deadlines.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Program checklist / 02  Budget narrative / 03  Dated requirement / 04  Budget mismatch / 05  Evidence request / 06  Export work plan</p>
+        <details><summary>Evidence and limits</summary><p>The model must not invent organizational outcomes, partners, credentials or impact figures. Staff assess actual eligibility and approve narrative claims.</p></details>
+        <a class="download" href="demos/GrantReadiness_ClickThroughDemo.pptx" download data-download aria-label="Download Nonprofit Grant Application Readiness PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.77 MB</p>
+        <h3>Logistics Shipment Exception Coordinator</h3>
+        <p>Delayed, damaged or incomplete shipments generate fragmented carrier events and customer emails. Teams need one consistent timeline and a defensible next update without inventing delivery promises.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Carrier playback / 02  Missed window / 03  Duplicate event / 04  Out-of-order event / 05  Unknown ETA / 06  Update / audit</p>
+        <details><summary>Evidence and limits</summary><p>A model cannot create carrier facts, promise an arrival date or accuse a carrier/customer of fraud. Event playback and any estimated timeline must be clearly labeled.</p></details>
+        <a class="download" href="demos/ShipmentException_ClickThroughDemo.pptx" download data-download aria-label="Download Logistics Shipment Exception Coordinator PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.76 MB</p>
+        <h3>Telecom Installation Order Readiness</h3>
+        <p>Installation appointments fail because site access, contact confirmation, required equipment or prerequisite work is missing. Staff repeatedly interpret unstructured customer notes and readiness checklists.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Order prerequisites / 02  Access missing / 03  Package guidance / 04  Stale inventory / 05  New attestation / 06  Proposed, not booked</p>
+        <details><summary>Evidence and limits</summary><p>Do not infer connectivity, site safety or customer authority from free text. Stock and appointment capacity require fresh authoritative checks before any real scheduling action.</p></details>
+        <a class="download" href="demos/ServiceOrderReadiness_ClickThroughDemo.pptx" download data-download aria-label="Download Telecom Installation Order Readiness PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 9 slides &middot; 0.81 MB</p>
+        <h3>Utility Bill Explanation and Dispute Desk</h3>
+        <p>Customers struggle to understand usage changes, rate components and adjustments. Billing specialists must reconstruct the calculation and separate explanation from a genuine dispute.</p>
+
+        <p><strong>Walkthrough:</strong> 01  Authorized account / 02  Tariff calculation / 03  Cited explanation / 04  Missing reading / 05  Dispute packet / 06  Approve / no change</p>
+        <details><summary>Evidence and limits</summary><p>Never infer hardship, eligibility or customer reliability from writing style or demographics. A disputed bill cannot trigger a payment demand, adverse action or automatic adjustment.</p></details>
+        <a class="download" href="demos/UtilityBill_ClickThroughDemo.pptx" download data-download aria-label="Download Utility Bill Explanation and Dispute Desk PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      </div>
+    </section>
+    <section id="solutions" aria-labelledby="solutions-title">
+      <h2 id="solutions-title">Solution &amp; platform tours</h2>
+      <p class="section-intro">Ten customer-neutral decks covering document extraction, clinical review, grounded answers, agents, language services and platform architecture. Some show captured prototypes; others are architecture briefings. Historical screenshots and logical diagrams do not verify a current deployment or production readiness.</p>
+      <div class="demo-grid">
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 21 slides &middot; 3.44 MB</p>
+        <h3>Case document extraction</h3>
+        <p>Reduce manual re-keying from case PDFs by selecting documents and fields, extracting facts and checking results before downstream handoff.</p>
+        <p><strong>Products / UI:</strong> Browser analyst UI; Azure AI Document Intelligence, Azure OpenAI GPT-4.1, Azure AI Search, Blob Storage and Logic Apps in the reference design.</p>
+        <p><strong>Walkthrough:</strong> Select PDFs and fields -&gt; OCR/layout extraction -&gt; interpretation and retrieval -&gt; human review and export.</p>
+        <details><summary>Evidence and limits</summary><p>Document/field selection and extraction results are captured. Excel and registry automation are described, not shown executing. Hosting and cloud deployment are not verified.</p></details>
+        <a class="download" href="demos/CaseDocumentExtraction_ClickThroughDemo.pptx" download data-download aria-label="Download Case document extraction PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 79 slides &middot; 7.08 MB</p>
+        <h3>Clinical abstraction and observability</h3>
+        <p>Make clinical abstraction reviewable through local masking, evidence-based answers, per-case tracing, evaluation, feedback, usage metrics and failure handling.</p>
+        <p><strong>Products / UI:</strong> Windows .NET MAUI, direct Azure OpenAI GPT-4.1 calls, Microsoft Entra ID, Application Insights and Log Analytics.</p>
+        <p><strong>Walkthrough:</strong> Synthetic cases -&gt; local preparation/masking -&gt; direct model request -&gt; clinical review and feedback, with correlated traces and telemetry.</p>
+        <details><summary>Evidence and limits</summary><p>The local app and synthetic runs are captured. The 100-record comparison scores prebuilt answers, not live outputs from two models. Portal steps are guidance; production PHI controls, clinical performance and inference residency are not proved.</p></details>
+        <a class="download" href="demos/ClinicalAbstractionObservability_ClickThroughDemo.pptx" download data-download aria-label="Download Clinical abstraction and observability PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 32 slides &middot; 2.19 MB</p>
+        <h3>Reviewable document evidence</h3>
+        <p>Expose missing, negated or conflicting facts by comparing extraction paths, tracing fields to page evidence and recording reviewer verdicts.</p>
+        <p><strong>Products / UI:</strong> Azure AI Document Intelligence, Azure AI Content Understanding, GPT-4.1 and a local browser/Python review UI.</p>
+        <p><strong>Walkthrough:</strong> Synthetic PDFs -&gt; parallel Document Intelligence layout and Content Understanding schema extraction -&gt; field/page-polygon review -&gt; JSON, CSV and feedback outputs.</p>
+        <details><summary>Evidence and limits</summary><p>24 synthetic PDFs, 48 successful service analyses and 259/264 field checks are captured; five mismatches remain visible. The browser replays saved results without calling Azure. Label Studio-compatible exports are shown, not a hosted import or clinical validation.</p></details>
+        <a class="download" href="demos/DocumentEvidenceExtraction_ClickThroughDemo.pptx" download data-download aria-label="Download Reviewable document evidence PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 6 slides &middot; 0.07 MB</p>
+        <h3>Document knowledge assistant</h3>
+        <p>Let nontechnical staff add documents and obtain cited answers without managing the Azure portal.</p>
+        <p><strong>Products / UI:</strong> Windows .NET MAUI, Blob Storage, Azure AI Search, Azure OpenAI GPT-4.1, text-embedding-3-small and Microsoft Entra ID.</p>
+        <p><strong>Walkthrough:</strong> App Library upload -&gt; Blob -&gt; indexer chunking/embedding -&gt; hybrid semantic/vector retrieval -&gt; direct OpenAI answer with citations.</p>
+        <details><summary>Evidence and limits</summary><p>The chat shell is captured; upload/reindex proof is a presenter sequence. Implementation exists, but packaged-stack deployment is not verified. Agent Service is not required; web hosting and SharePoint ingestion are alternative patterns.</p></details>
+        <a class="download" href="demos/DocumentKnowledgeAssistant_ClickThroughDemo.pptx" download data-download aria-label="Download Document knowledge assistant PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 24 slides &middot; 0.60 MB</p>
+        <h3>Microsoft Foundry platform tour</h3>
+        <p>Give teams a clear portal-oriented route from project access to model discovery, agent development, endpoints and operational controls.</p>
+        <p><strong>Products / UI:</strong> Microsoft Foundry portal, model catalog/deployments, Foundry Agent Service and Microsoft Entra ID.</p>
+        <p><strong>Walkthrough:</strong> Identity and project access -&gt; model selection/deployment -&gt; configure or code an agent -&gt; endpoints, governance and operation.</p>
+        <details><summary>Evidence and limits</summary><p>Saved portal views and presenter instructions form a guided platform tour. Most clicks and end-to-end execution are not captured. The deck does not prove deployment of a specific agent, evaluation, tracing pipeline or hosted app.</p></details>
+        <a class="download" href="demos/FoundryPlatformTour_ClickThroughDemo.pptx" download data-download aria-label="Download Microsoft Foundry platform tour PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 75 slides &middot; 10.22 MB</p>
+        <h3>Intake triage and video evidence</h3>
+        <p>Surface urgency, evidence and exceptions in noisy intake messages and case video while keeping analysts in control.</p>
+        <p><strong>Products / UI:</strong> .NET desktop/web interfaces; Azure OpenAI, Foundry Agent Service, Azure AI Language, Video Indexer, Azure AI Search, Blob Storage and Microsoft Entra ID.</p>
+        <p><strong>Walkthrough:</strong> Three separate paths: desktop local masking -&gt; direct OpenAI; email raw text -&gt; AI Language PII handling -&gt; agent; video Blob -&gt; Video Indexer -&gt; summary/embeddings/Search. Each supports analyst review or export.</p>
+        <details><summary>Evidence and limits</summary><p>Captured prototype workflows, not one serial pipeline or production approval. Only desktop intake masks locally before its model call. Routing is a recommendation; durable queues, case-system delivery and full compliance controls remain future work.</p></details>
+        <a class="download" href="demos/IntakeTriageAndVideoEvidence_ClickThroughDemo.pptx" download data-download aria-label="Download Intake triage and video evidence PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 19 slides &middot; 1.65 MB</p>
+        <h3>Language access services</h3>
+        <p>Provide translated digital/scanned notices, bilingual interpretation and usable transcripts of recorded calls, including an inserted audio notice.</p>
+        <p><strong>Products / UI:</strong> Windows .NET MAUI, Azure AI Translator, Azure AI Speech, Azure AI Document Intelligence and Microsoft Entra ID. OpenAI/Foundry is not required.</p>
+        <p><strong>Walkthrough:</strong> Related scenarios: document text extraction/OCR -&gt; Translator; prerecorded audio -&gt; Speech recognition/translation/synthesis -&gt; transcript review and local WAV splice. These are not one serial pipeline.</p>
+        <details><summary>Evidence and limits</summary><p>Synthetic notices and prerecorded hearing audio are shown; recognition/session issues are documented. Live-microphone performance and production integration are not established. Blob intake and approval workflows are proposed.</p></details>
+        <a class="download" href="demos/LanguageAccessServices_ClickThroughDemo.pptx" download data-download aria-label="Download Language access services PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 28 slides &middot; 22.69 MB</p>
+        <h3>Learning roleplay and reflection</h3>
+        <p>Turn character conversation into visible learning outcomes through evaluator evidence, guided reflection and an instructor-reviewable submission.</p>
+        <p><strong>Products / UI:</strong> Captured LMS/browser UI. A separate later recreation uses ASP.NET Core MVC/.NET 10, Azure OpenAI/Foundry and Blob Storage; that stack is not established by the original recording.</p>
+        <p><strong>Walkthrough:</strong> Learner roleplay -&gt; evaluator progress and evidence -&gt; guided reflection -&gt; learner confirmation and instructor report in the LMS.</p>
+        <details><summary>Evidence and limits</summary><p>Screens are from a recorded course demo. Its original cloud backend and production LMS API wiring are not verified. The assignment Dropbox is an LMS submission area, not Dropbox cloud storage.</p></details>
+        <a class="download" href="demos/LearningRoleplayAgent_ClickThroughDemo.pptx" download data-download aria-label="Download Learning roleplay and reflection PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 7 slides &middot; 0.05 MB</p>
+        <h3>Transportation data assistant</h3>
+        <p>Answer roadway-project questions with exact facts, authorized access and explainable grounding across structured records and narrative material.</p>
+        <p><strong>Products / UI:</strong> Proposed authorized chat UI, Azure SQL, Azure AI Search, Azure OpenAI/Foundry, Functions/Container Apps, Entra ID and API Management.</p>
+        <p><strong>Walkthrough:</strong> Authorized question -&gt; assistant selects approved SQL tools for authoritative facts and/or semantic Search for narratives -&gt; answer with records, filters and citations. SQL and Search are complementary branches.</p>
+        <details><summary>Evidence and limits</summary><p>An architecture briefing, not a captured running UI. A separate local RAG prototype queries Search, not runtime SQL. Private networking, Key Vault and monitoring remain proposed design elements.</p></details>
+        <a class="download" href="demos/TransportationDataAssistant_ClickThroughDemo.pptx" download data-download aria-label="Download Transportation data assistant PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      <article class="demo-card">
+        <p class="meta">POWERPOINT &middot; 10 slides &middot; 0.06 MB</p>
+        <h3>Voice-based counselor training</h3>
+        <p>Give counselor trainees realistic spoken practice with varied client personas, consistent rubric-based feedback and directional cost planning.</p>
+        <p><strong>Products / UI:</strong> Proposed browser audio, Azure AI Speech/Voice Live, Azure OpenAI, Batch API, Content Safety, Entra ID and Blob/Cosmos DB. Container Apps/Functions are hosting options.</p>
+        <p><strong>Walkthrough:</strong> Trainee voice interaction -&gt; speech/persona with guardrails -&gt; stored transcript and asynchronous rubric judging -&gt; trainee/instructor dashboard review.</p>
+        <details><summary>Evidence and limits</summary><p>Architecture and illustrative economics only, not a running voice app. Live latency, dashboard implementation and deployment are not verified. API Management, Key Vault and Monitor are supporting design options, not proven deployed services.</p></details>
+        <a class="download" href="demos/VoiceCounselorTraining_ClickThroughDemo.pptx" download data-download aria-label="Download Voice-based counselor training PowerPoint">Download PPTX <span aria-hidden="true">&darr;</span></a>
+      </article>
+      </div>
+    </section>
+  </main>
+  <footer>John Straumann &middot; Demo catalogue updated October 28, 2026 &middot; <a href="index.html">Back to home</a></footer>
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="script.js"></script>
+</body>
+</html>
