@@ -34,6 +34,10 @@ Word document and deployment inventories are not published. When updating a demo
 the PPTX into `demos/` and update its description, limits, slide count and size in
 `demos.html`. New entries need a direct link with `download` and `data-download`.
 
+The published decks were reviewed on October 28, 2026 to remove hidden slides and
+the "Microsoft for Government" title slide. Case Document Extraction now has 17 slides;
+the complete library has 387. Its START TOUR link skips the removed introductory slides.
+
 ## Download tracking
 
 GitHub Pages serves static files only, so no server-side logging is possible here. Playbook
